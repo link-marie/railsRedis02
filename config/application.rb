@@ -1,6 +1,7 @@
 require_relative 'boot'
 
 require 'rails/all'
+# require 'connection_pool'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -16,7 +17,7 @@ module RailsRedis02
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     
-    config.cache_store = :redis_store, 'redis://localhost:6379/0/cache', { expires_in: 90.minutes }
-
+    config.cache_store = :redis_store, 'redis://localhost:6379/0/cache'
+    # config.cache_store = :redis_store, 'redis://localhost:6379/0/cache', { expires_in: 90.minutes }
   end
 end

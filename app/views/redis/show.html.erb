@@ -1,1 +1,13 @@
-<%= Redis.current.get('mykey') %>
+myStr = <%= Redis.current.get('myStr') %>
+<br>
+myKey = <%= Redis.current.get('mykey') %>
+<br>
+value1 = <%= @value1.value %>
+<br>
+list1 = <%= @list1.values %>&nbsp;&nbsp;<%= @list1[0] %>
+<br>
+hash1 = <%= @hash1.all %>
+<br>
+set1 = <%= @set1.members %>
+<br>
+setSorted1 = <%= @setSorted1.members %>
