@@ -1,5 +1,7 @@
 myStr = <%= Redis.current.get('myStr') %>
 <br>
+str1 = <%= @str1.value %>
+<br>
 myKey = <%= Redis.current.get('mykey') %>
 <br>
 value1 = <%= @value1.value %>
@@ -11,3 +13,5 @@ hash1 = <%= @hash1.all %>
 set1 = <%= @set1.members %>
 <br>
 setSorted1 = <%= @setSorted1.members %>
+<br>
+user1 = <%= @user1.my_posts %>

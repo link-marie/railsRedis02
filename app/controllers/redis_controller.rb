@@ -2,6 +2,7 @@ class RedisController < ApplicationController
   
   def show
     doString01
+    doString02
     doInteger02
     doValue01
     doList01
@@ -11,7 +12,15 @@ class RedisController < ApplicationController
   end
   
   def doString01
-    Redis.current.set('myStr', 'Hello redis02')
+    if Rails.env.development?
+      Redis.current.set('myStr', 'Hello redis02 development')
+    else
+      Redis.current.set('myStr', 'Hello redis02 production')
+    end
+  end
+
+  def doString02
+    @str1 = Redis::Value.new('myStr')
   end
   
   def doInteger01 
@@ -19,13 +28,12 @@ class RedisController < ApplicationController
   end
 
   def doInteger02 
-    user = User.new
-    user.my_posts.increment
-    user.my_posts.decrement
-    user.my_posts.increment(3)
-    user.my_posts.decrement(3)
-    redis = Redis.current.set('mykey', user.my_posts)
-    
+    @user1 = User.new
+    @user1.my_posts.increment
+    @user1.my_posts.decrement
+    @user1.my_posts.increment(3)
+    @user1.my_posts.decrement(3)
+    redis = Redis.current.set('mykey', @user1.my_posts)
   end
   
   def doValue01 
